@@ -73,8 +73,6 @@ pip install -r requirements_module.txt
 - `OPENAI_API_BASE`: 如使用自部署的OpenAI模型，请填写对应的API基础URL。
 - `HF_TOKEN`: Hugging Face的API Token，用于访问和下载模型。
 - `HF_ENDPOINT`: 当遇到模型下载问题时，可指定自定义的Hugging Face端点。
-- `APPID` 和 `ACCESS_TOKEN`: 用于火山引擎TTS的凭据。
-- `BAIDU_API_KEY`和`BAIDU_SECRET_KEY`: 用于百度文心一言的API
 
 > [!NOTE]
 >
@@ -94,11 +92,6 @@ pip install -r requirements_module.txt
 # Linux 终端运行
 bash scripts/download_models.sh
 
-# Windows
-python scripts/modelscope_download.py
-# 下载wav2vec2_fairseq_base_ls960_asr_ls960.pth文件放在models/ASR/whisper文件夹下
-wget -nc https://download.pytorch.org/torchaudio/models/wav2vec2_fairseq_base_ls960_asr_ls960.pth \
-    -O models/ASR/whisper/wav2vec2_fairseq_base_ls960_asr_ls960.pth
 ```
 
 

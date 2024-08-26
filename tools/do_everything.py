@@ -6,11 +6,9 @@ from .step000_video_downloader import get_info_list_from_url, download_single_vi
 from .step010_demucs_vr import separate_all_audio_under_folder, init_demucs
 from .step020_asr import transcribe_all_audio_under_folder
 from .step021_asr_whisperx import init_whisperx, init_diarize
-from .step022_asr_funasr import init_funasr
 from .step030_translation import translate_all_transcript_under_folder
 from .step040_tts import generate_all_wavs_under_folder
 from .step042_tts_xtts import init_TTS
-from .step043_tts_cosyvoice import init_cosyvoice
 from .step050_synthesize_video import synthesize_all_video_under_folder
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -82,14 +80,11 @@ def do_everything(root_folder, url, num_videos=5, resolution='1080p',
         executor.submit(init_demucs)
         if tts_method == 'xtts':
             executor.submit(init_TTS)
-        elif tts_method == 'cosyvoice':
-            executor.submit(init_cosyvoice)
+
         if asr_method == 'WhisperX':
             executor.submit(init_whisperx)
             if diarization:
                 executor.submit(init_diarize)
-        elif asr_method == 'FunASR':
-            executor.submit(init_funasr)
         # Waiting for the get_info_list_from_url task to complete and storing its result
         # video_info_list = video_info_future.result()
     out_video = None
